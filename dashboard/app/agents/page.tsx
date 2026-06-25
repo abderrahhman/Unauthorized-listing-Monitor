@@ -60,11 +60,11 @@ export default function AgentsPage() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950">
+    <div className="min-h-screen bg-zinc-50 dark:bg-[#0a0a0a]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6">
 
         <div className="mb-6">
-          <h1 className="text-xl font-bold text-zinc-900 dark:text-white">Agent Fingerprinting</h1>
+          <h1 className="text-2xl font-semibold text-zinc-900 dark:text-white tracking-tight">Agent Fingerprinting</h1>
           <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-0.5">
             Agents ranked by number of high-similarity matches with your properties
           </p>
@@ -78,12 +78,12 @@ export default function AgentsPage() {
           <div className="space-y-3">
             {agents.map((a, i) => (
               <div key={a.agent_name}
-                className="bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 shadow-sm overflow-hidden">
+                className="bg-white dark:bg-[#111] rounded-xl border border-zinc-200 dark:border-[#222] shadow-sm overflow-hidden">
                 <button
-                  className="w-full flex items-center gap-4 p-5 text-left hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition-colors"
+                  className="w-full flex items-center gap-4 p-5 text-left hover:bg-zinc-50 dark:hover:bg-[#1a1a1a]/50 transition-colors"
                   onClick={() => setExpanded(expanded === a.agent_name ? null : a.agent_name)}
                 >
-                  <span className="w-7 h-7 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 text-xs font-bold flex items-center justify-center shrink-0">
+                  <span className="w-7 h-7 rounded-full bg-zinc-100 dark:bg-[#1a1a1a] text-zinc-500 dark:text-zinc-400 text-xs font-bold flex items-center justify-center shrink-0">
                     {i + 1}
                   </span>
 
@@ -116,7 +116,7 @@ export default function AgentsPage() {
                 </button>
 
                 {expanded === a.agent_name && (
-                  <div className="border-t border-zinc-100 dark:border-zinc-800 px-5 py-3 space-y-2 bg-zinc-50 dark:bg-zinc-800/50">
+                  <div className="border-t border-zinc-100 dark:border-[#222] px-5 py-3 space-y-2 bg-zinc-50 dark:bg-[#0a0a0a]">
                     {a.listings.slice(0, 10).map((l, j) => (
                       <div key={j} className="flex items-center justify-between text-xs gap-4">
                         <span className="text-zinc-600 dark:text-zinc-300 truncate flex-1">{l.dr_location}</span>

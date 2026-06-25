@@ -64,38 +64,44 @@ export default function Navbar() {
   )
 
   return (
-    <nav className="sticky top-0 z-50 bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800 shadow-sm print:hidden">
+    <nav className="sticky top-0 z-50 bg-white dark:bg-[#0a0a0a] border-b border-zinc-200 dark:border-[#1a1a1a] print:hidden">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-14">
 
           {/* Brand */}
-          <Link href="/" className="flex items-center gap-2 shrink-0">
-            <span className="w-7 h-7 rounded-lg bg-violet-600 flex items-center justify-center text-white text-xs font-bold">DR</span>
-            <span className="font-semibold text-sm text-zinc-900 dark:text-white hidden sm:block">
-              Listing Monitor
-            </span>
+          <Link href="/" className="flex items-center gap-2.5 shrink-0">
+            <span className="w-7 h-7 rounded-md bg-indigo-600 flex items-center justify-center text-white text-xs font-bold tracking-tight">DR</span>
+            <div className="hidden sm:block">
+              <span className="font-semibold text-sm text-zinc-900 dark:text-white">Listing Monitor</span>
+            </div>
           </Link>
 
           {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-0.5">
-            {links.map(l => (
-              <Link
-                key={l.href}
-                href={l.href}
-                className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
-                  path === l.href
-                    ? 'bg-violet-50 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300'
-                    : 'text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800'
-                }`}
-              >
-                {l.label}
-              </Link>
-            ))}
+          <div className="hidden md:flex items-center gap-0">
+            {links.map(l => {
+              const isActive = path === l.href
+              return (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className={`relative px-3.5 py-1.5 text-sm transition-colors ${
+                    isActive
+                      ? 'text-zinc-900 dark:text-white font-medium'
+                      : 'text-zinc-500 dark:text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200 font-normal'
+                  }`}
+                >
+                  {l.label}
+                  {isActive && (
+                    <span className="absolute bottom-0 left-3.5 right-3.5 h-[2px] bg-indigo-500 rounded-full" />
+                  )}
+                </Link>
+              )
+            })}
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             {/* 3-way theme toggle */}
-            <div className="flex items-center rounded-lg bg-zinc-100 dark:bg-zinc-800 p-0.5 gap-0.5">
+            <div className="flex items-center rounded-md bg-zinc-100 dark:bg-[#1a1a1a] p-0.5 gap-px">
               {([
                 { key: 'light'  as Theme, Icon: SunIcon,    title: 'Light'  },
                 { key: 'system' as Theme, Icon: SystemIcon, title: 'System' },
@@ -106,9 +112,9 @@ export default function Navbar() {
                   onClick={() => changeTheme(key)}
                   title={title}
                   aria-label={`${title} mode`}
-                  className={`p-1.5 rounded-md transition-colors ${
+                  className={`p-1.5 rounded transition-colors ${
                     theme === key
-                      ? 'bg-white dark:bg-zinc-700 text-zinc-900 dark:text-white shadow-sm'
+                      ? 'bg-white dark:bg-[#333] text-zinc-900 dark:text-white shadow-sm'
                       : 'text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300'
                   }`}
                 >
@@ -120,7 +126,7 @@ export default function Navbar() {
             {/* Mobile hamburger */}
             <button
               onClick={() => setMenuOpen(o => !o)}
-              className="md:hidden w-8 h-8 flex items-center justify-center rounded-lg text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+              className="md:hidden w-8 h-8 flex items-center justify-center rounded-md text-zinc-500 hover:bg-zinc-100 dark:hover:bg-[#1a1a1a]"
               aria-label="Menu"
             >
               {menuOpen ? (
@@ -139,16 +145,16 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-4 py-2 space-y-1">
+        <div className="md:hidden border-t border-zinc-200 dark:border-[#1a1a1a] bg-white dark:bg-[#0a0a0a] px-4 py-2 space-y-0.5">
           {links.map(l => (
             <Link
               key={l.href}
               href={l.href}
               onClick={() => setMenuOpen(false)}
-              className={`block px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+              className={`block px-3 py-2 rounded-md text-sm transition-colors ${
                 path === l.href
-                  ? 'bg-violet-50 dark:bg-violet-900/30 text-violet-700 dark:text-violet-300'
-                  : 'text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800'
+                  ? 'text-zinc-900 dark:text-white font-medium bg-zinc-50 dark:bg-[#1a1a1a]'
+                  : 'text-zinc-500 dark:text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200'
               }`}
             >
               {l.label}

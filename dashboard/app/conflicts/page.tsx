@@ -88,7 +88,7 @@ export default function ConflictsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950">
+    <div className="min-h-screen bg-zinc-50 dark:bg-[#0a0a0a]">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 py-6">
 
         {/* Header */}
@@ -108,23 +108,23 @@ export default function ConflictsPage() {
 
         {/* Stats + top agencies */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
-          <div className="bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-700 p-4">
+          <div className="bg-white dark:bg-[#111] rounded-xl border border-zinc-200 dark:border-[#2a2a2a] p-4">
             <p className="text-xs text-zinc-500 dark:text-zinc-400">Total Conflicts</p>
             <p className="text-2xl font-bold text-red-600 dark:text-red-400">{conflicts.length}</p>
           </div>
-          <div className="bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-700 p-4">
+          <div className="bg-white dark:bg-[#111] rounded-xl border border-zinc-200 dark:border-[#2a2a2a] p-4">
             <p className="text-xs text-zinc-500 dark:text-zinc-400">Unique Permits</p>
             <p className="text-2xl font-bold text-orange-600 dark:text-orange-400">
               {new Set(conflicts.map(c => c.permit_number)).size}
             </p>
           </div>
-          <div className="bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-700 p-4">
+          <div className="bg-white dark:bg-[#111] rounded-xl border border-zinc-200 dark:border-[#2a2a2a] p-4">
             <p className="text-xs text-zinc-500 dark:text-zinc-400">Agencies</p>
             <p className="text-2xl font-bold text-purple-600 dark:text-purple-400">
               {new Set(conflicts.map(c => c.agency_name)).size}
             </p>
           </div>
-          <div className="bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-700 p-4">
+          <div className="bg-white dark:bg-[#111] rounded-xl border border-zinc-200 dark:border-[#2a2a2a] p-4">
             <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-2">Top Offender</p>
             {topAgencies[0] && (
               <>
@@ -136,13 +136,13 @@ export default function ConflictsPage() {
         </div>
 
         {/* Agency bar */}
-        <div className="bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-700 p-4 mb-6">
+        <div className="bg-white dark:bg-[#111] rounded-xl border border-zinc-200 dark:border-[#2a2a2a] p-4 mb-6">
           <p className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-3">Top Offending Agencies</p>
           <div className="space-y-2">
             {topAgencies.map(([agency, count]) => (
               <div key={agency} className="flex items-center gap-3">
                 <span className="text-sm text-zinc-700 dark:text-zinc-300 w-56 truncate shrink-0">{agency}</span>
-                <div className="flex-1 bg-zinc-100 dark:bg-zinc-800 rounded-full h-2">
+                <div className="flex-1 bg-zinc-100 dark:bg-[#1a1a1a] rounded-full h-2">
                   <div className="bg-red-400 h-2 rounded-full transition-all"
                     style={{ width: `${(count / (topAgencies[0]?.[1] ?? 1)) * 100}%` }} />
                 </div>
@@ -155,7 +155,7 @@ export default function ConflictsPage() {
         {/* Filters */}
         <div className="flex flex-wrap items-center gap-2 mb-4">
           <select
-            className="border border-zinc-200 dark:border-zinc-700 rounded-lg px-2.5 py-1.5 text-sm bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-200 shadow-sm"
+            className="border border-zinc-200 dark:border-[#2a2a2a] rounded-lg px-2.5 py-1.5 text-sm bg-white dark:bg-[#111] text-zinc-700 dark:text-zinc-200 shadow-sm"
             value={community} onChange={e => setCommunity(e.target.value)}>
             {COMMUNITIES.map(c => <option key={c}>{c}</option>)}
           </select>
@@ -163,7 +163,7 @@ export default function ConflictsPage() {
             type="text"
             placeholder="Search permit, agent, agency, location…"
             value={search} onChange={e => setSearch(e.target.value)}
-            className="border border-zinc-200 dark:border-zinc-700 rounded-lg px-3 py-1.5 text-sm bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-200 shadow-sm w-full sm:w-72"
+            className="border border-zinc-200 dark:border-[#2a2a2a] rounded-lg px-3 py-1.5 text-sm bg-white dark:bg-[#111] text-zinc-700 dark:text-zinc-200 shadow-sm w-full sm:w-72"
           />
           <span className="text-sm text-zinc-400 dark:text-zinc-500 ml-auto">{filtered.length} results</span>
         </div>
@@ -174,11 +174,11 @@ export default function ConflictsPage() {
         ) : filtered.length === 0 ? (
           <div className="text-center py-20 text-zinc-400 dark:text-zinc-600">No conflicts found</div>
         ) : (
-          <div className="bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-700 shadow-sm overflow-hidden">
+          <div className="bg-white dark:bg-[#111] rounded-xl border border-zinc-200 dark:border-[#2a2a2a] shadow-sm overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="border-b border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800">
+                  <tr className="border-b border-zinc-200 dark:border-[#2a2a2a] bg-zinc-50 dark:bg-[#1a1a1a]">
                     {[
                       { key: 'community' as SortKey,     label: 'Community'    },
                       { key: 'permit_number' as SortKey, label: 'Permit'       },
@@ -195,11 +195,11 @@ export default function ConflictsPage() {
                     <th className="text-left text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wide px-4 py-3 whitespace-nowrap">Links</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
+                <tbody className="divide-y divide-gray-100 dark:divide-[#1a1a1a]">
                   {filtered.map(c => (
-                    <tr key={c.id} className="hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition-colors">
+                    <tr key={c.id} className="hover:bg-zinc-50 dark:hover:bg-[#1a1a1a]/50 transition-colors">
                       <td className="px-4 py-3 whitespace-nowrap">
-                        <span className="text-xs bg-violet-50 dark:bg-violet-900/20 text-violet-600 dark:text-violet-400 px-2 py-0.5 rounded font-medium">
+                        <span className="text-xs font-medium text-indigo-400 dark:text-indigo-400">
                           {c.community ?? '—'}
                         </span>
                       </td>

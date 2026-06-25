@@ -95,7 +95,7 @@ export default function PropertyPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 flex items-center justify-center text-zinc-400 dark:text-zinc-600">
+      <div className="min-h-screen bg-zinc-50 dark:bg-[#0a0a0a] flex items-center justify-center text-zinc-400 dark:text-zinc-600">
         Loading...
       </div>
     )
@@ -103,7 +103,7 @@ export default function PropertyPage() {
 
   if (!property) {
     return (
-      <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 flex items-center justify-center text-zinc-400 dark:text-zinc-600">
+      <div className="min-h-screen bg-zinc-50 dark:bg-[#0a0a0a] flex items-center justify-center text-zinc-400 dark:text-zinc-600">
         Property not found.
       </div>
     )
@@ -114,7 +114,7 @@ export default function PropertyPage() {
   const unauthorized = matches.filter(m => !m.is_authorized).length
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950">
+    <div className="min-h-screen bg-zinc-50 dark:bg-[#0a0a0a]">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-6">
 
         <Link href="/search"
@@ -123,7 +123,7 @@ export default function PropertyPage() {
         </Link>
 
         {/* DR property card */}
-        <div className="bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 p-6 shadow-sm mb-6">
+        <div className="bg-white dark:bg-[#111] rounded-xl border border-zinc-200 dark:border-[#222] p-6 shadow-sm mb-6">
           <div className="flex items-start justify-between gap-4">
             <div>
               <div className="flex items-center gap-2 mb-2">
@@ -171,7 +171,7 @@ export default function PropertyPage() {
           <div className="flex items-center gap-2">
             <label className="text-sm text-zinc-600 dark:text-zinc-300">Building filter</label>
             <select
-              className="border border-zinc-200 dark:border-zinc-700 rounded-lg px-3 py-1.5 text-sm bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-200 shadow-sm"
+              className="border border-zinc-200 dark:border-[#2a2a2a] rounded-lg px-3 py-1.5 text-sm bg-white dark:bg-[#111] text-zinc-700 dark:text-zinc-200 shadow-sm"
               value={buildingFilter} onChange={e => setBuildingFilter(e.target.value as BuildingFilter)}>
               <option value="exclude_diff">Exclude different building</option>
               <option value="same_only">Same building only</option>
@@ -189,8 +189,8 @@ export default function PropertyPage() {
               const b = m.bayut_community_rentals
               if (!b) return null
               return (
-                <div key={m.id} className={`bg-white dark:bg-zinc-900 rounded-xl border shadow-sm overflow-hidden ${
-                  m.building_match === false ? 'border-red-100 dark:border-red-900 opacity-60' : 'border-zinc-200 dark:border-zinc-800'
+                <div key={m.id} className={`bg-white dark:bg-[#111] rounded-xl border shadow-sm overflow-hidden ${
+                  m.building_match === false ? 'border-red-100 dark:border-red-900 opacity-60' : 'border-zinc-200 dark:border-[#222]'
                 }`}>
                   <div className={`h-1 w-full ${
                     m.is_authorized ? 'bg-emerald-400' :
@@ -237,7 +237,7 @@ export default function PropertyPage() {
                         <div className={`text-xs px-2 py-0.5 rounded border font-medium text-center ${
                           m.building_match === true  ? 'bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800' :
                           m.building_match === false ? 'bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border-red-200 dark:border-red-800' :
-                                                       'bg-zinc-50 dark:bg-zinc-800 text-zinc-400 border-zinc-200 dark:border-zinc-700'
+                                                       'bg-zinc-50 dark:bg-[#1a1a1a] text-zinc-400 border-zinc-200 dark:border-[#2a2a2a]'
                         }`}>
                           {m.building_match === true  ? `✓ Same bldg (${m.dr_building})` :
                            m.building_match === false ? `✗ Bldg ${m.dr_building} vs ${m.bayut_building}` :

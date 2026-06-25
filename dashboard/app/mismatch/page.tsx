@@ -63,18 +63,18 @@ export default function MismatchPage() {
   }
 
   const tabs: { key: Tab; label: string; count: number; color: string }[] = [
-    { key: 'all',                label: 'All',               count: rows.length,              color: 'bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-200' },
+    { key: 'all',                label: 'All',               count: rows.length,              color: 'bg-zinc-100 dark:bg-[#1a1a1a] text-zinc-700 dark:text-zinc-200' },
     { key: 'matched',            label: 'Matched',           count: counts.matched,           color: 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400' },
     { key: 'missing_from_bayut', label: 'Missing from Bayut', count: counts.missing_from_bayut, color: 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400' },
     { key: 'extra_on_bayut',     label: 'Extra on Bayut',    count: counts.extra_on_bayut,    color: 'bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400' },
   ]
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950">
+    <div className="min-h-screen bg-zinc-50 dark:bg-[#0a0a0a]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6">
 
         <div className="mb-6">
-          <h1 className="text-xl font-bold text-zinc-900 dark:text-white">DR Website vs Bayut</h1>
+          <h1 className="text-2xl font-semibold text-zinc-900 dark:text-white tracking-tight">DR Website vs Bayut</h1>
           <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-0.5">
             Comparing your 118 website units against your 146 official Bayut listings
           </p>
@@ -88,7 +88,7 @@ export default function MismatchPage() {
             { label: 'Extra on Bayut',     value: counts.extra_on_bayut,     color: 'text-amber-600 dark:text-amber-400', sub: 'on Bayut, not on website' },
             { label: 'Price Mismatch',     value: counts.price_mismatch,     color: 'text-purple-600 dark:text-purple-400', sub: 'price differs >5%' },
           ].map(s => (
-            <div key={s.label} className="bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 p-4 shadow-sm">
+            <div key={s.label} className="bg-white dark:bg-[#111] rounded-xl border border-zinc-200 dark:border-[#222] p-4 shadow-sm">
               <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-1">{s.label}</p>
               <p className={`text-3xl font-bold ${s.color}`}>{s.value}</p>
               <p className="text-xs text-zinc-400 dark:text-zinc-500 mt-1">{s.sub}</p>
@@ -106,7 +106,7 @@ export default function MismatchPage() {
                 className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
                   tab === t.key
                     ? t.color + ' ring-1 ring-inset ring-current'
-                    : 'bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800'
+                    : 'bg-white dark:bg-[#111] text-zinc-600 dark:text-zinc-300 border border-zinc-200 dark:border-[#222] hover:bg-zinc-50 dark:hover:bg-[#1a1a1a]'
                 }`}
               >
                 {t.label} <span className="ml-1 opacity-60">{t.count}</span>
@@ -132,11 +132,11 @@ export default function MismatchPage() {
         ) : (
           <div className="space-y-3">
             {filtered.map(r => (
-              <div key={r.id} className={`bg-white dark:bg-zinc-900 rounded-xl border shadow-sm p-5 ${
+              <div key={r.id} className={`bg-white dark:bg-[#111] rounded-xl border shadow-sm p-5 ${
                 r.status === 'missing_from_bayut' ? 'border-red-200 dark:border-red-900' :
                 r.status === 'extra_on_bayut'     ? 'border-amber-200 dark:border-amber-900' :
                 (r.price_diff_pct ?? 0) > 5       ? 'border-purple-200 dark:border-purple-900' :
-                                                     'border-zinc-200 dark:border-zinc-800'
+                                                     'border-zinc-200 dark:border-[#222]'
               }`}>
                 <div className="flex items-start gap-4 flex-wrap sm:flex-nowrap">
 

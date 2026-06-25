@@ -45,11 +45,11 @@ export default function SearchPage() {
   }, [query, search])
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950">
+    <div className="min-h-screen bg-zinc-50 dark:bg-[#0a0a0a]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6">
 
         <div className="mb-6">
-          <h1 className="text-xl font-bold text-zinc-900 dark:text-white">Search Properties</h1>
+          <h1 className="text-2xl font-semibold text-zinc-900 dark:text-white tracking-tight">Search Properties</h1>
           <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-0.5">Search by name, ID, community, or location</p>
         </div>
 
@@ -58,7 +58,7 @@ export default function SearchPage() {
           <input
             type="text"
             placeholder="e.g. Al Khail Gate, 2bedroom, Phase II-1, akg-1-28..."
-            className="w-full pl-10 pr-4 py-3 border border-zinc-200 dark:border-zinc-700 rounded-xl text-sm bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 shadow-sm focus:outline-none focus:ring-2 focus:ring-violet-500 placeholder:text-zinc-400 dark:placeholder:text-zinc-600"
+            className="w-full pl-10 pr-4 py-3 border border-zinc-200 dark:border-[#2a2a2a] rounded-xl text-sm bg-white dark:bg-[#111] text-zinc-900 dark:text-zinc-100 shadow-sm focus:outline-none focus:ring-2 focus:ring-violet-500 placeholder:text-zinc-400 dark:placeholder:text-zinc-600"
             value={query}
             onChange={e => setQuery(e.target.value)}
             autoFocus
@@ -84,7 +84,7 @@ export default function SearchPage() {
               <Link
                 key={p.url}
                 href={`/property/${encodeURIComponent(p.url)}`}
-                className="block bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 p-5 shadow-sm hover:shadow-md hover:border-violet-200 dark:hover:border-violet-800 transition-all"
+                className="block bg-white dark:bg-[#111] rounded-xl border border-zinc-200 dark:border-[#222] p-5 shadow-sm hover:shadow-md hover:border-violet-200 dark:hover:border-violet-800 transition-all"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="min-w-0">

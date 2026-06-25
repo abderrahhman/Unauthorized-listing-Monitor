@@ -72,20 +72,20 @@ export default function ReportPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 flex items-center justify-center text-zinc-400 dark:text-zinc-600">
+      <div className="min-h-screen bg-zinc-50 dark:bg-[#0a0a0a] flex items-center justify-center text-zinc-400 dark:text-zinc-600">
         Loading report...
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950">
+    <div className="min-h-screen bg-zinc-50 dark:bg-[#0a0a0a]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6">
 
         {/* Toolbar */}
         <div className="print:hidden flex items-center justify-between mb-6">
           <div>
-            <h1 className="text-xl font-bold text-zinc-900 dark:text-white">Violation Report</h1>
+            <h1 className="text-2xl font-semibold text-zinc-900 dark:text-white tracking-tight">Violation Report</h1>
             <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-0.5">Printable report of all confirmed permit conflicts</p>
           </div>
           <button
@@ -101,10 +101,10 @@ export default function ReportPage() {
         </div>
 
         {/* Report document */}
-        <div className="bg-white dark:bg-zinc-900 shadow-sm rounded-xl border border-zinc-200 dark:border-zinc-800 print:shadow-none print:border-none print:rounded-none">
+        <div className="bg-white dark:bg-[#111] shadow-sm rounded-xl border border-zinc-200 dark:border-[#222] print:shadow-none print:border-none print:rounded-none">
 
           {/* Cover */}
-          <div className="px-12 pt-12 pb-8 border-b border-zinc-200 dark:border-zinc-800">
+          <div className="px-12 pt-12 pb-8 border-b border-zinc-200 dark:border-[#222]">
             <div className="flex items-start justify-between">
               <div>
                 <p className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-2">Confidential</p>
@@ -133,7 +133,7 @@ export default function ReportPage() {
           </div>
 
           {/* Executive Summary */}
-          <div className="px-12 py-8 border-b border-zinc-200 dark:border-zinc-800">
+          <div className="px-12 py-8 border-b border-zinc-200 dark:border-[#222]">
             <h2 className="text-lg font-bold text-zinc-900 dark:text-white mb-5">Executive Summary</h2>
 
             <div className="grid grid-cols-3 gap-6 mb-6">
@@ -142,7 +142,7 @@ export default function ReportPage() {
                 { label: 'Communities Affected', value: orderedCommunities.length,                         sub: 'out of 22 managed' },
                 { label: 'Agencies Involved',   value: agencySummary.length,                              sub: 'real estate agencies' },
               ].map(s => (
-                <div key={s.label} className="bg-zinc-50 dark:bg-zinc-800 rounded-lg p-4 border border-zinc-200 dark:border-zinc-700">
+                <div key={s.label} className="bg-zinc-50 dark:bg-[#1a1a1a] rounded-lg p-4 border border-zinc-200 dark:border-[#2a2a2a]">
                   <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-1">{s.label}</p>
                   <p className="text-2xl font-bold text-zinc-900 dark:text-white">{s.value}</p>
                   <p className="text-xs text-zinc-400 dark:text-zinc-500 mt-0.5">{s.sub}</p>
@@ -152,7 +152,7 @@ export default function ReportPage() {
 
             <table className="w-full text-sm mb-6">
               <thead>
-                <tr className="border-b border-zinc-200 dark:border-zinc-700">
+                <tr className="border-b border-zinc-200 dark:border-[#2a2a2a]">
                   <th className="text-left text-xs text-zinc-500 dark:text-zinc-400 font-semibold uppercase tracking-wide py-2">Community</th>
                   <th className="text-right text-xs text-zinc-500 dark:text-zinc-400 font-semibold uppercase tracking-wide py-2">Violations</th>
                   <th className="text-right text-xs text-zinc-500 dark:text-zinc-400 font-semibold uppercase tracking-wide py-2">Share</th>
@@ -160,7 +160,7 @@ export default function ReportPage() {
               </thead>
               <tbody>
                 {orderedCommunities.map(comm => (
-                  <tr key={comm} className="border-b border-zinc-100 dark:border-zinc-800">
+                  <tr key={comm} className="border-b border-zinc-100 dark:border-[#222]">
                     <td className="py-2 text-zinc-800 dark:text-zinc-200">{comm}</td>
                     <td className="py-2 text-right font-semibold text-zinc-900 dark:text-white">{byCommunity[comm].length}</td>
                     <td className="py-2 text-right text-zinc-500 dark:text-zinc-400">
@@ -174,7 +174,7 @@ export default function ReportPage() {
             <h3 className="text-sm font-bold text-zinc-700 dark:text-zinc-300 mb-3">Agencies Involved</h3>
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-zinc-200 dark:border-zinc-700">
+                <tr className="border-b border-zinc-200 dark:border-[#2a2a2a]">
                   <th className="text-left text-xs text-zinc-500 dark:text-zinc-400 font-semibold uppercase tracking-wide py-2">Agency</th>
                   <th className="text-left text-xs text-zinc-500 dark:text-zinc-400 font-semibold uppercase tracking-wide py-2">Agents</th>
                   <th className="text-right text-xs text-zinc-500 dark:text-zinc-400 font-semibold uppercase tracking-wide py-2">Violations</th>
@@ -182,7 +182,7 @@ export default function ReportPage() {
               </thead>
               <tbody>
                 {agencySummary.map(([agency, data]) => (
-                  <tr key={agency} className="border-b border-zinc-100 dark:border-zinc-800">
+                  <tr key={agency} className="border-b border-zinc-100 dark:border-[#222]">
                     <td className="py-2 text-zinc-800 dark:text-zinc-200 font-medium">{agency}</td>
                     <td className="py-2 text-zinc-500 dark:text-zinc-400 text-xs">{Array.from(data.agents).join(', ')}</td>
                     <td className="py-2 text-right font-semibold text-red-600 dark:text-red-400">{data.count}</td>
@@ -209,8 +209,8 @@ export default function ReportPage() {
                   {byCommunity[comm].map(c => {
                     violationNum++
                     return (
-                      <div key={c.id} className="border border-zinc-200 dark:border-zinc-700 rounded-lg overflow-hidden">
-                        <div className="flex items-center justify-between bg-zinc-50 dark:bg-zinc-800 px-4 py-2.5 border-b border-zinc-200 dark:border-zinc-700">
+                      <div key={c.id} className="border border-zinc-200 dark:border-[#2a2a2a] rounded-lg overflow-hidden">
+                        <div className="flex items-center justify-between bg-zinc-50 dark:bg-[#1a1a1a] px-4 py-2.5 border-b border-zinc-200 dark:border-[#2a2a2a]">
                           <div className="flex items-center gap-3">
                             <span className="text-xs font-bold text-white bg-red-500 rounded-full w-6 h-6 flex items-center justify-center shrink-0">
                               {violationNum}
@@ -263,7 +263,7 @@ export default function ReportPage() {
           </div>
 
           {/* Footer */}
-          <div className="px-12 py-6 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800/50 print:bg-white rounded-b-xl">
+          <div className="px-12 py-6 border-t border-zinc-200 dark:border-[#222] bg-zinc-50 dark:bg-[#0a0a0a] print:bg-white rounded-b-xl">
             <p className="text-xs text-zinc-400 dark:text-zinc-500 text-center">
               Dubai Residential L.L.C · Confidential · Generated {reportDate} ·
               All violations confirmed via DLD permit number cross-reference
